@@ -37,6 +37,7 @@ redirect_log() {
 fetch_commits() {
   local repo="$1"
   echo "===== Repository: $repo ====="
+
   PAGE=1
   while :; do
     echo "Fetching page $PAGE..."
@@ -58,6 +59,9 @@ fetch_commits() {
     '
 
     ((PAGE++))
+
+    # レートリミット対策
+    sleep 3s
   done
 }
 
