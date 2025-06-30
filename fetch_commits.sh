@@ -41,31 +41,20 @@ fetch_commits() {
   while :; do
     echo "Fetching page $PAGE..."
 
-    # ステータスコードとレスポンスを取得
-    RESPONSE_AND_STATUS=$(curl -s -w "\n%{http_code}" -H "Authorization: Bearer $GITHUB_TOKEN" \
+    RESPONSE=$(curl -s -H "Authorization: Bearer $GITHUB_TOKEN" \
       "https://api.github.com/repos/$OWNER/$repo/commits?per_page=100&page=$PAGE")
-    HTTP_STATUS=$(echo "$RESPONSE_AND_STATUS" | tail -n1)
-    HTTP_BODY=$(echo "$RESPONSE_AND_STATUS" | sed '$d')
 
-    # HTTPステータスコードのチェック
-    if [ "$HTTP_STATUS" -ne 200 ]; then
-      echo "Error: HTTP status $HTTP_STATUS for $repo (page $PAGE)" >&2
+    if [ "$(echo "$RESPONSE" | jq 'length')" -eq 0 ]; then
       break
     fi
 
-    # レスポンスが配列かどうかのチェック
-    if ! echo "$HTTP_BODY" | jq 'type == "array"' | grep -q true; then
-      echo "Error: Response is not an array for $repo (page $PAGE)" >&2
-      break
-    fi
-
-    if [ "$(echo "$HTTP_BODY" | jq 'length')" -eq 0 ]; then
-      break
-    fi
-
-    echo "$HTTP_BODY" | jq -r '
-      .[]
-      | "Author: \(.commit.author.name) <\(.commit.author.email)>\nCommitter: \(.commit.committer.name) <\(.commit.committer.email)>\n"
+    echo "$RESPONSE" | jq -r '
+      .[] | [
+        "Date:   \(.commit.author.date)",
+        "Author: \(.commit.author.name) <\(.commit.author.email)>",
+        "Committer: \(.commit.committer.name) <\(.commit.committer.email)>",
+        ""
+      ] | .[]
     '
 
     ((PAGE++))
