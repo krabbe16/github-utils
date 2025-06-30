@@ -31,9 +31,8 @@ fetch_repos() {
   while :; do
     RESPONSE=$(curl -s -H "Authorization: Bearer $GITHUB_TOKEN" \
       "https://api.github.com/users/$OWNER/repos?per_page=100&page=$PAGE")
-    COUNT=$(echo "$RESPONSE" | jq 'length')
 
-    if [ "$COUNT" -eq 0 ]; then
+    if [ "$(echo "$RESPONSE" | jq 'length')" -eq 0 ]; then
       break
     fi
 
