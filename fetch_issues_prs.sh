@@ -91,7 +91,7 @@ fetch_issues_and_prs() {
     echo "Issues ($state): $ISSUE_COUNT"
 
     # レートリミット対策
-    sleep 5s
+    sleep 3s
   done
 
   # PR数
@@ -108,7 +108,7 @@ fetch_issues_and_prs() {
     echo "Pull Requests ($state): $PR_COUNT"
 
     # レートリミット対策
-    sleep 5s
+    sleep 3s
   done
 }
 
