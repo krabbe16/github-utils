@@ -65,7 +65,7 @@ check_github_token_set() {
 # ログファイルへのリダイレクト
 redirect_log() {
   SCRIPT_NAME="$(basename "$0" .sh)"
-  LOG_FILE="${SCRIPT_NAME}.log"
+  LOG_FILE="logs/${SCRIPT_NAME}.log"
   exec > "$LOG_FILE" 2>&1
 }
 
