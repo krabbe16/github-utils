@@ -3,8 +3,6 @@
 OWNER="krabbe16"
 REPOS=(
   "yurikago"
-  "yurikago-astro"
-  "yurikago-next"
 )
 
 # NOTE: 以下の環境変数は設定が必要

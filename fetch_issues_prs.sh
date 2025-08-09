@@ -2,48 +2,7 @@
 
 OWNER="krabbe16"
 REPOS=(
-  github-utils
-  krabbe16
-  puppeteer-css-coverage
-  sandbox-cdk-ts
-  sandbox-cdk-ts-cfn-lint
-  sandbox-cdk-ts-ecs-fargate-datadog
-  sandbox-circleci-nuxt-test-utils
-  sandbox-eslint-config-typescript
-  sandbox-hast-util-raw
-  sandbox-husky-lint-staged
-  sandbox-jest-puppeteer
-  sandbox-js-debug
-  sandbox-jsmart
-  sandbox-jsonld
-  sandbox-lighthouse
-  sandbox-lighthouse-v6
-  sandbox-lint-action
-  sandbox-nltk
-  sandbox-node-express
-  sandbox-nuxt-axios-retry
-  sandbox-nuxt-intersection-observer
-  sandbox-nuxt-proxy
-  sandbox-nuxt-retry-axios
-  sandbox-nuxt-watch
-  sandbox-nuxt-with-vue-intersect
-  sandbox-nuxt2-ts-provide-inject
-  sandbox-nuxt3-lighthouse-ci
-  sandbox-preload-polyfill
-  sandbox-puppeteer
-  sandbox-puppeteer-examples
-  sandbox-tesseract
-  sandbox-tf-waf-rule-uri-and-ip
-  sandbox-uuid
-  sandbox-vite-promise
-  sandbox-vscode-extension
-  sandbox-webpack-typescript
-  slides-from-markdown
-  sugoi-haskell
-  tokei-note
   yurikago
-  yurikago-astro
-  yurikago-next
 )
 
 # NOTE: 以下の環境変数は設定が必要
